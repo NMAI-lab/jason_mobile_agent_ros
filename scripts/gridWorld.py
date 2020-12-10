@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Dec  9 21:34:19 2020
+#!/usr/bin/env python
 
-@author: Patrick
-"""
+import rospy
+from std_msgs.msg import String
+import re
 
 class GridMap:
     
@@ -116,14 +115,48 @@ class GridMap:
                 self.gridContent[y][x] = 'A'
                 return True
         return False
+
+
+def runPerceptions(myMap, publisher):
+    rate = rospy.Rate(2)
+    
+    while not rospy.is_shutdown():
+        perceptionList = myMap.perceive()
+        perceptionString = ""
+    
+        for perception in perceptionList:
+            perceptionString += str(perception) + " "
+
+        # Publish the perception
+        rospy.loginfo("Perceptions: " + str(perceptionString))
+        publisher.publish(perceptionString)   
+        
+        rate.sleep()
            
+def act(data, args):
+    (myMap) = args
+    action = data.data
+    
+    rospy.loginfo("Action: " + str(action))
+    
+    if "move" in action:
+        # Extract the action parameter between the brackets
+        direction = re.search('\((.*)\)', action).group(1)
+        myMap.move(direction)
+        myMap.printMap()
+        
+
+def rosMain():
+    myMap = GridMap()
+    rospy.init_node('gridWorld', anonymous=True)
+    publisher = rospy.Publisher('perceptions', String, queue_size=10)
+    rospy.Subscriber('actions', String, act, (myMap))
+    runPerceptions(myMap, publisher)
+
 
 if __name__ == '__main__':
-     myMap = GridMap()
-     myMap.printMap()
-     
-     print(myMap.perceive())
-     myMap.move("up")
-     myMap.printMap()
-     print(myMap.perceive())
-     
+    try:
+        rosMain()
+    except rospy.ROSInterruptException:
+        pass
+    
