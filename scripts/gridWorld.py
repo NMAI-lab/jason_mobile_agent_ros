@@ -47,14 +47,17 @@ class GridMap:
         return self.gridNames[y][x] # Locations are stored row, column, meaning Y,X
         
     def printMap(self):
+        print()
         print("|-------------------------------|")
-        i = 0
+        y = 0
         for row in(self.gridNames):
-            content = self.gridContent[i]
-            i+=1
+            content = self.gridContent[y]
             print("|   " + row[0] + "   |   " + row[1]+ "   |   " + row[2] + "   |   " + row[3] + "   |")
             print("|   " + content[0] + "   |   " + content[1]+ "   |   " + content[2] + "   |   " + content[3] + "   |")
+            print("| [0," + str(y) + "] | [1," + str(y) + "] | [2," + str(y) + "] | [3," + str(y) + "] |")
             print("|-------------------------------|")
+            y+=1
+        print()
         
     
     def perceive(self):
