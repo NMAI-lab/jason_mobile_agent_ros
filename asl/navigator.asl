@@ -23,9 +23,10 @@
 // We don't have a route plan, get one and set the waypoints.
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Current,[X,Y])
-	<-	+destination(Destination);
+	<-	.print("Generating a plan to get to: ", Destination);
+		+destination(Destination);
 		?a_star(Current,Destination,Solution,Cost);
-//		.print(Solution);
+		.print("Plan solution: ", Solution);
 		for (.member( op(Direction,NextPosition), Solution)) {
 			!waypoint(Direction,NextPosition);
 		}
@@ -36,17 +37,18 @@
 	:	isDirection(Direction) &
 		map(Direction) &
 		not obstacle(Direction)
-	<-	move(Direction).
+	<-	move(Direction);
+		.print("move(",Direction,")");.
 	
 // Move through the map, if possible.
 +!waypoint(Direction, Next)
 	:	isDirection(Direction) &
 		map(Direction) &
 		obstacle(Direction)
-	<-	!updateMap(Direction, Next).
+	<-	.print("!updateMap(",Direction,", ", Next,")");.
+		!updateMap(Direction, Next).
 
-// Deal with case where Direction is not a valid way to go.
-+!waypoint(_,_).
+
 
 +!updateMap(Direction, NextName)
 	:	position(X,Y) &
@@ -58,9 +60,7 @@
 		.drop_all_intentions;
 		!navigate(Destination).
 	
-+!updateMap(Direction,NextName)
-	<-	.print("Map update default ",Direction, " ", NextName);
-		!updateMap(Direction,NextName).
+
 		
 
 // Check that Direction is infact a direction
@@ -82,10 +82,23 @@ nameMatch(Current,CurrentPosition,Next,NextPosition) :- locationName(Current,Cur
 														  locationName(Next,NextPosition).
 
 // Map of locations that the agent can visit.
-{ include("map.asl") }
+{ include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/map.asl") }
 
 // heutistic definition: h(CurrentState,Goal,H)
 h(Current,Goal,H) :- H = math.sqrt( ((X2-X1) * (X2-X1)) + ((Y2-Y1) * (Y2-Y1)) ) &
 						 nameMatch(Current,[X1,Y1],Goal,[X2,Y2]).
 
-{ include("a_star.asl") }
+{ include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/a_star.asl") }
+
+
+// Default plans
++!navigate(Destination)
+	<-	.print("Navigate default plan").
+
+// Deal with case where Direction is not a valid way to go.
++!waypoint(A,B)
+	<-	.print("Waypoint default plan ", A, " ", B).
+
++!updateMap(Direction,NextName)
+	<-	.print("Map update default ",Direction, " ", NextName);
+		!updateMap(Direction,NextName).
