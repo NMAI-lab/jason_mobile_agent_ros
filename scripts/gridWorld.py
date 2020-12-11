@@ -80,9 +80,9 @@ class GridMap:
         perception = list()
         for location in locations:
             if self.onMap(location[0],location[1]):
-                perception.append("map" + str(location))
+                perception.append("map(" + str(self.getDirection(location)) + ")") 
             else:
-                perception.append("obstacle" + str(location))
+                perception.append("obstacle(" + str(self.getDirection(location)) + ")") 
         return perception
     
     def perceiveObstacles(self,x,y):
@@ -91,8 +91,23 @@ class GridMap:
         for location in locations:
             if self.onMap(location[0],location[1]):
                 if self.gridContent[location[1]][location[0]] == 'X':
-                    perception.append("obstacle" + str(location))         
+                    perception.append("obstacle(" + str(self.getDirection(location)) + ")")       
         return perception
+    
+    def getDirection(self,position):
+        (x,y) = self.agentLocation
+        (x1,y1) = position
+ 
+        # Not bulletbroof!
+        if y1 < y:
+            return "up"
+        elif y1 > y:
+            return "down"
+        elif x1 < x:
+            return "left"
+        else:
+            return "right"
+            
     
     def move(self, direction):
         (x,y) = self.agentLocation
