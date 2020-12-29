@@ -14,24 +14,28 @@
 		.
 */
 
++path(Solution)
+	<-	.print("Plan solution: ", Solution);
+		for (.member( op(Direction,NextPosition), Solution)) {
+			!waypoint(Direction,NextPosition);
+		}
+		!navigate(Destination).
+
 // Case where we are already at the destination
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Destination,[X,Y])
 	<-	.print("Made it to the destination!");
 		-destinaton(Destination).
 
-// We don't have a route plan, get one and set the waypoints.
+// We don't have a route plan, get one.
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Current,[X,Y])
 	<-	.print("Generating a plan to get to: ", Destination);
 		+destination(Destination);
-		?a_star(Current,Destination,Solution,Cost);
-		.print("Plan solution: ", Solution);
-		for (.member( op(Direction,NextPosition), Solution)) {
-			!waypoint(Direction,NextPosition);
-		}
-		!navigate(Destination).
-	
+		setDestination(Destination);
+		setPosition(Current).
+		
+
 // Move through the map, if possible.
 +!waypoint(Direction,_)
 	:	isDirection(Direction) &
