@@ -11,7 +11,7 @@ def translateAction(data, args):
     # Action format: getPath(Current,Destination)
     if "getPath" in action:
         parameterString = re.search('\((.*)\)', action).group(1)
-        parameterString.replace(" ","")
+        parameterString = parameterString.replace(" ","")
         parameterList = parameterString.split(",")
         
         current = parameterList[0]
@@ -26,7 +26,10 @@ def translateAction(data, args):
 def translatePath(data, args):
     (perceptionsPublisher, _, _) = args
     path = data.data
-    perceptionString = "route(" + path + ")"
+    perceptionString = "path(" + path + ")"
+    perceptionString = perceptionString.replace(" ","")
+    perceptionString = perceptionString.replace("'","")
+    
     rospy.loginfo("Perceptions: " + str(perceptionString))
     perceptionsPublisher.publish(perceptionString) 
 

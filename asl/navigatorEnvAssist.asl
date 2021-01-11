@@ -112,5 +112,5 @@ direction(Current,Next,right)
 		& locationName(Next,[X+1,Y]).			
 
 // Map of locations that the agent can visit.
-{ include("map.asl") }
+{ include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/map.asl") }
 
