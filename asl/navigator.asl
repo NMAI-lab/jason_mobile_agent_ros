@@ -17,16 +17,17 @@
 // Case where we are already at the destination
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Destination,[X,Y])
-	<-	.print("Made it to the destination!");
+	<-	.broadcast(tell, navigate(arrived(Destination)));
 		-destinaton(Destination).
 
 // We don't have a route plan, get one and set the waypoints.
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Current,[X,Y])
-	<-	.print("Generating a plan to get to: ", Destination);
+	<-	.broadcast(tell, navigate(gettingRoute(Destination)));
+		.broadcast(tell, navigate(current(Current)));
 		+destination(Destination);
 		?a_star(Current,Destination,Solution,Cost);
-		.print("Plan solution: ", Solution);
+		.broadcast(tell, navigate(route(Solution,Cost), Destination));
 		for (.member( op(Direction,NextPosition), Solution)) {
 			!waypoint(Direction,NextPosition);
 		}
@@ -38,14 +39,14 @@
 		map(Direction) &
 		not obstacle(Direction)
 	<-	move(Direction);
-		.print("move(",Direction,")");.
+		.broadcast(tell, waypoint(move(Direction))).
 	
 // Move through the map, if possible.
 +!waypoint(Direction, Next)
 	:	isDirection(Direction) &
 		map(Direction) &
 		obstacle(Direction)
-	<-	.print("!updateMap(",Direction,", ", Next,")");.
+	<-	.broadcast(tell, waypoint(updateMap(Direction,Next)));
 		!updateMap(Direction, Next).
 
 
@@ -56,19 +57,15 @@
 		possible(PositionName,NextName) &
 		destination(Destination)
 	<-	-possible(PositionName,NextName)
-		.print("Did map update ", Direction, " ", NextName);
+		.broadcast(tell, updateMap(Direction,NextName));
 		.drop_all_intentions;
 		!navigate(Destination).
-	
-
-		
 
 // Check that Direction is infact a direction
 isDirection(Direction) :- (Direction = up) |
 						  (Direction = down) |
 						  (Direction = left) |
 						  (Direction = right).
-		
 		
 /* The following two rules are domain dependent and have to be redefined accordingly */
 
@@ -90,15 +87,14 @@ h(Current,Goal,H) :- H = math.sqrt( ((X2-X1) * (X2-X1)) + ((Y2-Y1) * (Y2-Y1)) ) 
 
 { include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/a_star.asl") }
 
-
 // Default plans
 +!navigate(Destination)
-	<-	.print("Navigate default plan").
+	<-	.broadcast(tell, navigate(default,Destination)).
 
 // Deal with case where Direction is not a valid way to go.
 +!waypoint(A,B)
-	<-	.print("Waypoint default plan ", A, " ", B).
+	<-	.broadcast(tell, waypoint(default,A,B)).	
 
 +!updateMap(Direction,NextName)
-	<-	.print("Map update default ",Direction, " ", NextName);
+	<-	.broadcast(tell, updateMap(default,Direction,NextName));	
 		!updateMap(Direction,NextName).
