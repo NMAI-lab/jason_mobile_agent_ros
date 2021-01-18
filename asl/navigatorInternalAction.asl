@@ -1,6 +1,6 @@
 // Demo program of Jason based navigation using A*
 
-!navigate(d).
+//!navigate(d).
 
 /*
 // Benchmark version

@@ -1,0 +1,15 @@
+Topic,Data,TimeStamp
+outbox,"<mid1,0,tell,BROADCAST,navigate(gettingRoute(d))>",2021-01-18 16:10:51.843000
+outbox,"<mid2,0,tell,BROADCAST,navigate(current(a))>",2021-01-18 16:10:52.351000
+outbox,"<mid3,0,tell,BROADCAST,navigate(route([op(initial,a),op(up,e),op(up,i),op(up,m),op(right,n),op(right,o),op(down,k),op(right,l),op(down,h),op(down,d)],9),d)>",2021-01-18 16:10:53.843000
+outbox,"<mid4,0,tell,BROADCAST,waypoint(default,initial,a)>",2021-01-18 16:10:55.346000
+outbox,"<mid5,0,tell,BROADCAST,waypoint(move(up))>",2021-01-18 16:10:57.344000
+outbox,"<mid6,0,tell,BROADCAST,waypoint(move(up))>",2021-01-18 16:10:59.347000
+outbox,"<mid7,0,tell,BROADCAST,waypoint(move(up))>",2021-01-18 16:11:01.343000
+outbox,"<mid8,0,tell,BROADCAST,waypoint(move(right))>",2021-01-18 16:11:03.346000
+outbox,"<mid9,0,tell,BROADCAST,waypoint(move(right))>",2021-01-18 16:11:05.346000
+outbox,"<mid10,0,tell,BROADCAST,waypoint(move(down))>",2021-01-18 16:11:07.348000
+outbox,"<mid11,0,tell,BROADCAST,waypoint(move(right))>",2021-01-18 16:11:09.336000
+outbox,"<mid12,0,tell,BROADCAST,waypoint(move(down))>",2021-01-18 16:11:11.344000
+outbox,"<mid13,0,tell,BROADCAST,waypoint(move(down))>",2021-01-18 16:11:13.344000
+outbox,"<mid14,0,tell,BROADCAST,navigate(arrived(d))>",2021-01-18 16:11:14.834000
