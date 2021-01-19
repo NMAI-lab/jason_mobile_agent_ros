@@ -1,0 +1,15 @@
+Topic,Data,TimeStamp
+outbox,"<mid1,0,tell,BROADCAST,navigate(arrived(a))>",2021-01-19 14:30:40.696000
+outbox,"<mid2,0,tell,BROADCAST,navigate(gettingRoute(d))>",2021-01-19 14:30:44.186000
+outbox,"<mid3,0,tell,BROADCAST,navigate(current(a))>",2021-01-19 14:30:44.697000
+outbox,"<mid4,0,tell,BROADCAST,navigate(route([e,i,m,n,o,k,g,h,d]),d)>",2021-01-19 14:30:45.696000
+outbox,"<mid5,0,tell,BROADCAST,waypoint(move(up))>",2021-01-19 14:30:47.698000
+outbox,"<mid6,0,tell,BROADCAST,waypoint(move(up))>",2021-01-19 14:30:49.695000
+outbox,"<mid7,0,tell,BROADCAST,waypoint(move(up))>",2021-01-19 14:30:51.687000
+outbox,"<mid8,0,tell,BROADCAST,waypoint(move(right))>",2021-01-19 14:30:53.681000
+outbox,"<mid9,0,tell,BROADCAST,waypoint(move(right))>",2021-01-19 14:30:55.686000
+outbox,"<mid10,0,tell,BROADCAST,waypoint(move(down))>",2021-01-19 14:30:57.693000
+outbox,"<mid11,0,tell,BROADCAST,waypoint(move(down))>",2021-01-19 14:30:59.679000
+outbox,"<mid12,0,tell,BROADCAST,waypoint(move(right))>",2021-01-19 14:31:01.683000
+outbox,"<mid13,0,tell,BROADCAST,waypoint(move(down))>",2021-01-19 14:31:03.693000
+outbox,"<mid14,0,tell,BROADCAST,navigate(arrived(d))>",2021-01-19 14:31:05.195000

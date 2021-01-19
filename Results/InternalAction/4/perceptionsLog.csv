@@ -1,0 +1,74 @@
+Topic,Data,TimeStamp
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:12.032000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:12.527000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:13.035000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:13.527000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:14.035000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:14.527000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:15.033000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:15.525000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:16.032000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:16.526000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:17.034000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:17.525000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:18.032000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:18.525000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:19.031000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:19.524000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:20.030000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:20.523000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:21.028000
+perceptions,"position(0, 3) map(right) obstacle(left) obstacle(down) map(up) ",2021-01-19 14:26:21.538000
+perceptions,"position(0, 2) map(right) obstacle(left) map(down) map(up) obstacle(right) ",2021-01-19 14:26:22.030000
+perceptions,"position(0, 2) map(right) obstacle(left) map(down) map(up) obstacle(right) ",2021-01-19 14:26:22.537000
+perceptions,"position(0, 2) map(right) obstacle(left) map(down) map(up) obstacle(right) ",2021-01-19 14:26:23.028000
+perceptions,"position(0, 2) map(right) obstacle(left) map(down) map(up) obstacle(right) ",2021-01-19 14:26:23.536000
+perceptions,"position(0, 1) map(right) obstacle(left) map(down) map(up) obstacle(right) ",2021-01-19 14:26:24.030000
+perceptions,"position(0, 1) map(right) obstacle(left) map(down) map(up) obstacle(right) ",2021-01-19 14:26:24.525000
+perceptions,"position(0, 1) map(right) obstacle(left) map(down) map(up) obstacle(right) ",2021-01-19 14:26:25.031000
+perceptions,"position(0, 1) map(right) obstacle(left) map(down) map(up) obstacle(right) ",2021-01-19 14:26:25.524000
+perceptions,"position(0, 0) map(right) obstacle(left) map(down) obstacle(up) ",2021-01-19 14:26:26.032000
+perceptions,"position(0, 0) map(right) obstacle(left) map(down) obstacle(up) ",2021-01-19 14:26:26.527000
+perceptions,"position(0, 0) map(right) obstacle(left) map(down) obstacle(up) ",2021-01-19 14:26:27.035000
+perceptions,"position(0, 0) map(right) obstacle(left) map(down) obstacle(up) ",2021-01-19 14:26:27.531000
+perceptions,"position(1, 0) map(right) map(left) map(down) obstacle(up) obstacle(down) ",2021-01-19 14:26:28.024000
+perceptions,"position(1, 0) map(right) map(left) map(down) obstacle(up) obstacle(down) ",2021-01-19 14:26:28.535000
+perceptions,"position(1, 0) map(right) map(left) map(down) obstacle(up) obstacle(down) ",2021-01-19 14:26:29.027000
+perceptions,"position(1, 0) map(right) map(left) map(down) obstacle(up) obstacle(down) ",2021-01-19 14:26:29.534000
+perceptions,"position(2, 0) map(right) map(left) map(down) obstacle(up) obstacle(right) ",2021-01-19 14:26:30.026000
+perceptions,"position(2, 0) map(right) map(left) map(down) obstacle(up) obstacle(right) ",2021-01-19 14:26:30.535000
+perceptions,"position(2, 0) map(right) map(left) map(down) obstacle(up) obstacle(right) ",2021-01-19 14:26:31.026000
+perceptions,"position(2, 0) map(right) map(left) map(down) obstacle(up) obstacle(right) ",2021-01-19 14:26:31.534000
+perceptions,"position(2, 1) map(right) map(left) map(down) map(up) obstacle(left) ",2021-01-19 14:26:32.026000
+perceptions,"position(2, 1) map(right) map(left) map(down) map(up) obstacle(left) ",2021-01-19 14:26:32.532000
+perceptions,"position(2, 1) map(right) map(left) map(down) map(up) obstacle(left) ",2021-01-19 14:26:33.026000
+perceptions,"position(2, 1) map(right) map(left) map(down) map(up) obstacle(left) ",2021-01-19 14:26:33.535000
+perceptions,"position(2, 2) map(right) map(left) map(down) map(up) obstacle(left) obstacle(down) ",2021-01-19 14:26:34.029000
+perceptions,"position(2, 2) map(right) map(left) map(down) map(up) obstacle(left) obstacle(down) ",2021-01-19 14:26:34.524000
+perceptions,"position(2, 2) map(right) map(left) map(down) map(up) obstacle(left) obstacle(down) ",2021-01-19 14:26:35.034000
+perceptions,"position(2, 2) map(right) map(left) map(down) map(up) obstacle(left) obstacle(down) ",2021-01-19 14:26:35.527000
+perceptions,"position(3, 2) obstacle(right) map(left) map(down) map(up) ",2021-01-19 14:26:36.037000
+perceptions,"position(3, 2) obstacle(right) map(left) map(down) map(up) ",2021-01-19 14:26:36.530000
+perceptions,"position(3, 2) obstacle(right) map(left) map(down) map(up) ",2021-01-19 14:26:37.026000
+perceptions,"position(3, 2) obstacle(right) map(left) map(down) map(up) ",2021-01-19 14:26:37.533000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:38.029000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:38.523000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:39.032000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:39.527000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:40.035000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:40.526000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:41.037000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:41.530000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:42.022000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:42.529000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:43.024000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:43.534000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:44.031000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:44.527000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:45.037000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:45.527000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:46.039000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:46.534000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:47.033000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:47.530000
+perceptions,"position(3, 3) obstacle(right) map(left) obstacle(down) map(up) obstacle(left) ",2021-01-19 14:26:48.028000
