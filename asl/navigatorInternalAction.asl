@@ -1,6 +1,6 @@
 // Demo program of Jason based navigation using A*
 
-!navigate(d).
+//!navigate(d).
 
 /*
 // Benchmark version
@@ -22,7 +22,7 @@
 // Case where we are already at the destination
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Destination,[X,Y])
-	<-	.print("Made it to the destination!");
+	<-	.broadcast(tell, navigate(arrived(Destination)));
 		-destinaton(Destination);
 		-route(Path).
 
@@ -30,14 +30,18 @@
 +!navigate(Destination)
 	:	position(X,Y) 
 		& locationName(Current,[X,Y])
-	<-	savi_ros_java.savi_ros_bdi.navigation.getPath(Current,Destination,Path);
+	<-	.broadcast(tell, navigate(gettingRoute(Destination)));
+		.broadcast(tell, navigate(current(Current)));
+		savi_ros_java.savi_ros_bdi.navigation.getPath(Current,Destination,Path);
+		.broadcast(tell, navigate(route(Path), Destination));
 		for (.member(NextPosition, Path)) {
 			!waypoint(NextPosition);
 		}
 		!navigate(Destination).	
 
 +!navigate(Destination)
-	<-	!navigate(Destination).
+	<-	.broadcast(tell, navigate(default,Destination)).
+		!navigate(Destination).
 	
 
 // Move through the map, if possible.
@@ -47,7 +51,8 @@
 		& direction(Current,NextPosition,Direction)
 		& map(Direction)
 		& (not obstacle(Direction))
-	<-	move(Direction).
+	<-	move(Direction);
+		.broadcast(tell, waypoint(move(Direction))).
 	
 // Move through the map, if possible.
 //+!waypoint(NextPosition)
@@ -57,8 +62,7 @@
 //	<-	!updateMap(Direction, Next).
 
 // Deal with case where Direction is not a valid way to go.
-+!waypoint(Next) <- .print("Waypoint default").
-
++!waypoint(Next) <- .broadcast(tell, waypoint(default)).
 
 // Revisit map update later.
 /*

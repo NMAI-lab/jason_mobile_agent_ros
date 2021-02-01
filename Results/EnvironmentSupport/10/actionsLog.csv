@@ -1,0 +1,12 @@
+Topic,Data,TimeStamp
+actions,"getPath(a,d)",2021-01-20 10:19:29.558000
+actions,"getPath(a,d)",2021-01-20 10:19:32.558000
+actions,move(up),2021-01-20 10:19:37.556000
+actions,move(up),2021-01-20 10:19:39.548000
+actions,move(up),2021-01-20 10:19:41.556000
+actions,move(right),2021-01-20 10:19:43.545000
+actions,move(right),2021-01-20 10:19:45.546000
+actions,move(down),2021-01-20 10:19:47.546000
+actions,move(down),2021-01-20 10:19:49.545000
+actions,move(right),2021-01-20 10:19:51.545000
+actions,move(down),2021-01-20 10:19:53.555000

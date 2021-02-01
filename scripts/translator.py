@@ -13,14 +13,14 @@ def translateAction(data, args):
         parameterString = re.search('\((.*)\)', action).group(1)
         parameterString = parameterString.replace(" ","")
         parameterList = parameterString.split(",")
+              
+        destination = parameterList[1]
+        rospy.loginfo("Destination: " + str(destination))
+        destinationPublisher.publish(destination)
         
         current = parameterList[0]
         rospy.loginfo("Position: " + str(current))
         positionPublisher.publish(current)
-        
-        destination = parameterList[1]
-        rospy.loginfo("Destination: " + str(destination))
-        destinationPublisher.publish(destination)
 
     
 def translatePath(data, args):

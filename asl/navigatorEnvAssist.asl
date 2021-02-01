@@ -1,6 +1,6 @@
 // Demo program of Jason based navigation using A*
 
-!navigate(d).
+//!navigate(d).
 
 /*
 // Benchmark version
@@ -21,19 +21,21 @@
 
 // Perception of a path provided by the environment based navigation support
 +path(Path)
-	<-	+route(Path).
+	<-	.broadcast(tell, path(received, Path));
+		+route(Path).
 
 // Case where we are already at the destination
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Destination,[X,Y])
-	<-	.print("Made it to the destination!");
+	<-	.broadcast(tell, navigate(arrived(Destination)));
 		-destinaton(Destination);
 		-route(Path).
 
 // We have a route path, set the waypoints.
 +!navigate(Destination)
 	:	route(Path)
-	<-	for (.member(NextPosition, Path)) {
+	<-	.broadcast(tell, navigate(route(Path), Destination));
+		for (.member(NextPosition, Path)) {
 			!waypoint(NextPosition);
 		}
 		!navigate(Destination).
@@ -42,12 +44,13 @@
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Current,[X,Y])
 	<-	+destination(Destination);
+		.broadcast(tell, navigate(gettingRoute(Destination)));
 		getPath(Current,Destination);
 		!navigate(Destination).
 
 +!navigate(Destination)
-	<-	!navigate(Destination).
-	
+	<-	.broadcast(tell, navigate(default,Destination));
+		!navigate(Destination).
 
 // Move through the map, if possible.
 +!waypoint(NextPosition)
@@ -56,7 +59,8 @@
 		& direction(Current,NextPosition,Direction)
 		& map(Direction)
 		& (not obstacle(Direction))
-	<-	move(Direction).
+	<-	.broadcast(tell, waypoint(NextPosition,move(Direction)));
+		move(Direction).
 	
 // Move through the map, if possible.
 //+!waypoint(NextPosition)
@@ -66,8 +70,7 @@
 //	<-	!updateMap(Direction, Next).
 
 // Deal with case where Direction is not a valid way to go.
-+!waypoint(Next) <- .print("Waypoint default").
-
++!waypoint(_) <- .broadcast(tell, waypoint(default)).
 
 // Revisit map update later.
 /*
