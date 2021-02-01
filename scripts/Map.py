@@ -104,7 +104,14 @@ class Map(AStar):
         solutionPath = list(self.astar(start,self.destination))
         rospy.loginfo("Destination set: " + self.destination)
         publisher.publish(String(str(solutionPath)))
-
+        
+    def setObstacle(self, data):
+        paramaters = data.data
+        parameterList = paramaters.split(",")
+        current = parameterList[0]
+        blocked = parameterList[1]
+        while blocked in self.nodeGraph[current]:
+            self.nodeGraph[current].remove(blocked)
 
 def rosMain():
     # Setup the map
@@ -119,8 +126,11 @@ def rosMain():
     # Setup the publisher for the result
     publisher = rospy.Publisher('nagivation/path', String, queue_size=10)
 
-    # Subscribe to actions, watch for setDest messages
+    # Subscribe to actions, watch for getDirections messages
     rospy.Subscriber('navigation/position', String, worldMap.getDirections, (publisher))    
+
+    # Subscribe to actions, watch for setObstacle messages
+    rospy.Subscriber('navigation/obstacle', String, worldMap.getDirections)
 
     # Subscribe to actions, watch for setDest messages
     rospy.Subscriber('navigation/destination', String, worldMap.setDestination)
