@@ -28,8 +28,7 @@
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Destination,[X,Y])
 	<-	.broadcast(tell, navigate(arrived(Destination)));
-		-destinaton(Destination);
-		-route(Path).
+		-destinaton(Destination).
 
 // We have a route path, set the waypoints.
 +!navigate(Destination)
@@ -38,13 +37,14 @@
 		for (.member(NextPosition, Path)) {
 			!waypoint(NextPosition);
 		}
+		-route(Path);	   
 		!navigate(Destination).
 		
 // We don't have a route plan, get one.
 +!navigate(Destination)
 	:	position(X,Y) & locationName(Current,[X,Y])
 	<-	+destination(Destination);
-		.broadcast(tell, navigate(gettingRoute(Destination)));
+		.broadcast(tell, navigate(gettingRoute(Destination)));											 			 
 		getPath(Current,Destination);
 		!navigate(Destination).
 
@@ -58,37 +58,34 @@
 		& possible(Current,NextPosition)
 		& direction(Current,NextPosition,Direction)
 		& map(Direction)
-		& (not obstacle(Direction))
+		& (not obstacle(Direction))				   
 	<-	.broadcast(tell, waypoint(NextPosition,move(Direction)));
 		move(Direction).
 	
 // Move through the map, if possible.
-//+!waypoint(NextPosition)
-//	:	isDirection(Direction) &
-//		map(Direction) &
-//		obstacle(Direction)
-//	<-	!updateMap(Direction, Next).
++!waypoint(NextPosition)
+	:	isDirection(Direction)
+		& map(Direction) 
+		& obstacle(Direction)
+	<-	!updateMap(Next).
 
 // Deal with case where Direction is not a valid way to go.
 +!waypoint(_) <- .broadcast(tell, waypoint(default)).
 
 // Revisit map update later.
-/*
-+!updateMap(Direction, NextName)
-	:	position(X,Y) &
-		locationName(PositionName, [X,Y]) &
-		possible(PositionName,NextName) &
-		destination(Destination)
-	<-	-possible(PositionName,NextName)
-		.print("Did map update ", Direction, " ", NextName);
++!updateMap(NextName)
+	:	position(X,Y) & locationName(PositionName, [X,Y]) 
+		& destination(Destination)
+	<-	.broadcast(tell, obstacle(NextName));
+		-possible(PositionName,NextName);
+		setObstacle(PositionName,NextName);
 		.drop_all_intentions;
 		!navigate(Destination).
 	
-+!updateMap(Direction,NextName)
-	<-	.print("Map update default ",Direction, " ", NextName);
-		!updateMap(Direction,NextName).
-	
-*/
+//+!updateMap(NextName)
+//	:	startTime(Start)
+//	<-	.broadcast(tell, updateMap(elapsed(system.time - Start), default)).
+//		!updateMap(NextName).
 
 // Get the direction of the next movement
 direction(Current,Next,up)
