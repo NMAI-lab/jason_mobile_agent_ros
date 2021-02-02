@@ -35,27 +35,27 @@
 	
 // Move through the map, if possible.
 +!waypoint(Direction,_)
-	:	isDirection(Direction) &
-		map(Direction) &
-		not obstacle(Direction)
+	:	isDirection(Direction)
+		& map(Direction) 
+		& not obstacle(Direction)		
 	<-	move(Direction);
 		.broadcast(tell, waypoint(move(Direction))).
 	
 // Move through the map, if possible.
 +!waypoint(Direction, Next)
-	:	isDirection(Direction) &
-		map(Direction) &
-		obstacle(Direction)
+	:	isDirection(Direction)
+		& map(Direction) 
+		& obstacle(Direction)		
 	<-	.broadcast(tell, waypoint(updateMap(Direction,Next)));
 		!updateMap(Direction, Next).
 
 
 
 +!updateMap(Direction, NextName)
-	:	position(X,Y) &
-		locationName(PositionName, [X,Y]) &
-		possible(PositionName,NextName) &
-		destination(Destination)
+	:	position(X,Y)
+		& locationName(PositionName, [X,Y]) 
+		& possible(PositionName,NextName) 
+		& destination(Destination)					   
 	<-	-possible(PositionName,NextName)
 		.broadcast(tell, updateMap(Direction,NextName));
 		.drop_all_intentions;
