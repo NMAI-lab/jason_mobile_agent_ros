@@ -5,7 +5,7 @@ from std_msgs.msg import String
 import re
 
 def translateAction(data, args):
-    (_, positionPublisher, destinationPublisher) = args
+    (_, positionPublisher, destinationPublisher, obstaclePublisher) = args
     action = data.data
     
     # Action format: getPath(Current,Destination)
@@ -21,10 +21,14 @@ def translateAction(data, args):
         current = parameterList[0]
         rospy.loginfo("Position: " + str(current))
         positionPublisher.publish(current)
-
+    elif "setObstacle" in action:
+        parameterString = re.search('\((.*)\)', action).group(1)
+        parameterString = parameterString.replace(" ","")
+        obstaclePublisher.publish(parameterString)
+        
     
 def translatePath(data, args):
-    (perceptionsPublisher, _, _) = args
+    (perceptionsPublisher, _, _, _) = args
     path = data.data
     perceptionString = "path(" + path + ")"
     perceptionString = perceptionString.replace(" ","")
@@ -41,7 +45,8 @@ def rosMain():
     perceptionsPublisher = rospy.Publisher('perceptions', String, queue_size=10)
     positionPublisher = rospy.Publisher('navigation/position', String, queue_size=10)    
     destinationPublisher = rospy.Publisher('navigation/destination', String, queue_size=10)
-    publishers = (perceptionsPublisher, positionPublisher, destinationPublisher)
+    obstaclePublisher = rospy.Publisher('navigation/obstacle', String, queue_size=10)
+    publishers = (perceptionsPublisher, positionPublisher, destinationPublisher, obstaclePublisher)
     
     # Subscribe to actions - monitor for actions relevant to the map
     rospy.Subscriber('actions', String, translateAction, publishers)

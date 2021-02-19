@@ -30,7 +30,8 @@
 +!navigate(Destination)
 	:	position(X,Y) 
 		& locationName(Current,[X,Y])
-	<-	.broadcast(tell, navigate(gettingRoute(Destination)));
+	<-	+destination(Destination);
+		.broadcast(tell, navigate(gettingRoute(Destination)));
 		.broadcast(tell, navigate(current(Current)));
 		savi_ros_java.savi_ros_bdi.navigation.getPath(Current,Destination,Path);
 		.broadcast(tell, navigate(route(Path), Destination));
@@ -55,32 +56,26 @@
 		.broadcast(tell, waypoint(move(Direction))).
 	
 // Move through the map, if possible.
-//+!waypoint(NextPosition)
-//	:	isDirection(Direction) &
-//		map(Direction) &
-//		obstacle(Direction)
-//	<-	!updateMap(Direction, Next).
-
++!waypoint(NextPosition)
+	:	isDirection(Direction) 
+		& map(Direction)
+		& obstacle(Direction)
+	<-	.broadcast(tell, waypoint(obstacle(NextPosition)));
+		!updateMap(Next).
+											 
 // Deal with case where Direction is not a valid way to go.
 +!waypoint(Next) <- .broadcast(tell, waypoint(default)).
 
 // Revisit map update later.
-/*
-+!updateMap(Direction, NextName)
-	:	position(X,Y) &
-		locationName(PositionName, [X,Y]) &
-		possible(PositionName,NextName) &
-		destination(Destination)
-	<-	-possible(PositionName,NextName)
-		.print("Did map update ", Direction, " ", NextName);
++!updateMap(NextName)
+	:	position(X,Y) 
+		& locationName(PositionName, [X,Y]) 
+	<-	.broadcast(tell, updateMap(obstacle(NextName)));
+		-possible(PositionName,NextName);
+		savi_ros_java.savi_ros_bdi.navigation..setObstacle(PositionName,NextName);
 		.drop_all_intentions;
 		!navigate(Destination).
-	
-+!updateMap(Direction,NextName)
-	<-	.print("Map update default ",Direction, " ", NextName);
-		!updateMap(Direction,NextName).
-	
-*/
+
 
 // Get the direction of the next movement
 direction(Current,Next,up)
