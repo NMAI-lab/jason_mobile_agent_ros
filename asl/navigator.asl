@@ -29,9 +29,13 @@
 		?a_star(Current,Destination,Solution,Cost);
 		.broadcast(tell, navigate(route(Solution,Cost), Destination));
 		for (.member( op(Direction,NextPosition), Solution)) {
-			!waypoint(Direction,NextPosition);
+			!waypoint(Direction,NextPosition)[priority(3)];
 		}
-		!navigate(Destination).
+		!navigate(Destination)[priority(3)].
+		
+// Default plan
++!navigate(Destination)
+	<-	.broadcast(tell, navigate(default,Destination)).
 	
 // Move through the map, if possible.
 +!waypoint(Direction,_)
@@ -47,9 +51,11 @@
 		& map(Direction) 
 		& obstacle(Direction)		
 	<-	.broadcast(tell, waypoint(updateMap(Direction,Next)));
-		!updateMap(Direction, Next).
+		!updateMap(Direction, Next)[priority(4)].
 
-
+// Deal with case where Direction is not a valid way to go.
++!waypoint(A,B)
+	<-	.broadcast(tell, waypoint(default,A,B)).	
 
 +!updateMap(Direction, NextName)
 	:	position(X,Y)
@@ -59,8 +65,13 @@
 	<-	-possible(PositionName,NextName)
 		.broadcast(tell, updateMap(Direction,NextName));
 		.drop_all_intentions;
-		!navigate(Destination).
+		!navigate(Destination)[priority(3)].
 
+// Default plan
++!updateMap(Direction,NextName)
+	<-	.broadcast(tell, updateMap(default,Direction,NextName));	
+		!updateMap(Direction,NextName)[priority(4)].
+		
 // Check that Direction is infact a direction
 isDirection(Direction) :- (Direction = up) |
 						  (Direction = down) |
@@ -87,14 +98,4 @@ h(Current,Goal,H) :- H = math.sqrt( ((X2-X1) * (X2-X1)) + ((Y2-Y1) * (Y2-Y1)) ) 
 
 { include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/a_star.asl") }
 
-// Default plans
-+!navigate(Destination)
-	<-	.broadcast(tell, navigate(default,Destination)).
 
-// Deal with case where Direction is not a valid way to go.
-+!waypoint(A,B)
-	<-	.broadcast(tell, waypoint(default,A,B)).	
-
-+!updateMap(Direction,NextName)
-	<-	.broadcast(tell, updateMap(default,Direction,NextName));	
-		!updateMap(Direction,NextName).
