@@ -1,0 +1,42 @@
+# Run ROSCORE
+roscore
+
+# RUN THE ENVIRONMENT
+D:
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\devel
+setup.bat
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\src\jason_mobile_agent_ros\scripts
+python gridWorld.py
+
+# RUN THE TRANSLATOR
+D:
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\devel
+setup.bat
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\src\jason_mobile_agent_ros\scripts
+python translator.py
+
+# RUN THE REASONER
+D:
+cd D:\Local Documents\ROS_Workspaces\SAVI_ROS\rosjavaWorkspace\src\savi_ros_java\savi_ros_bdi\build\install\savi_ros_bdi\bin
+.\savi_ros_bdi.bat savi_ros_java.savi_ros_bdi.SAVI_Main
+
+# RUN THE USER INTERFACE
+D:
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\devel
+setup.bat
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\src\jason_mobile_agent_ros\scripts
+python userInterface.py
+
+# RUN THE MAP
+D:
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\devel
+setup.bat
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\src\jason_mobile_agent_ros\scripts
+python Map.py
+
+# RUN THE LOGGER
+D:
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\devel
+setup.bat
+cd D:\Local Documents\ROS_Workspaces\RoombaWorkspaces\src\jason_mobile_agent_ros\scripts
+python logger.py
