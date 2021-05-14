@@ -1,7 +1,5 @@
 // Demo program of Jason based navigation using A*
 
-!mission(navigate,[d]).
-
 { include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/obstacleHandler.asl")}
 { include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/batteryManager.asl") }
 
