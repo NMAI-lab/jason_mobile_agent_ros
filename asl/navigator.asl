@@ -1,7 +1,7 @@
 // Demo program of Jason based navigation using A*
 
-{ include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/obstacleHandler.asl")}
-{ include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/batteryManager.asl") }
+{ include("/home/pi/create_ws/src/jason_mobile_agent_ros/asl/obstacleHandler.asl")}
+{ include("/home/pi/create_ws/src/jason_mobile_agent_ros/aslbatteryManager.asl") }
 
 mission(mission).
 +!mission(Goal,Parameters)
@@ -35,10 +35,10 @@ navigation(navigate).
 +!navigate(Destination)
 	<-	.broadcast(tell, navigate(default,Destination)).
 
-{ include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/movement.asl") }
+{ include("/home/pi/create_ws/src/jason_mobile_agent_ros/asl/movement.asl") }
 
 // Map of locations that the agent can visit.
-{ include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/map.asl") }
+{ include("/home/pi/create_ws/src/jason_mobile_agent_ros/asl/map.asl") }
 
 /* The following two rules are domain dependent and have to be redefined accordingly */
 
@@ -55,5 +55,5 @@ nameMatch(Current,CurrentPosition,Next,NextPosition) :- locationName(Current,Cur
 h(Current,Goal,H) :- H = math.sqrt( ((X2-X1) * (X2-X1)) + ((Y2-Y1) * (Y2-Y1)) ) &
 						 nameMatch(Current,[X1,Y1],Goal,[X2,Y2]).
 
-{ include("D:/Local Documents/ROS_Workspaces/RoombaWorkspaces/src/jason_mobile_agent_ros/asl/a_star.asl") }
+{ include("/home/pi/create_ws/src/jason_mobile_agent_ros/asl/a_star.asl") }
 
